@@ -18,8 +18,8 @@
       </div>
       <div class="col-1">
         <button type="button" class="btn btn-sm btn-light" style="font-weight: 800; box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);" data-bs-toggle="modal" data-bs-target="#filterModal">
-          <i class="fa-sharp fa-solid fa-filter">Filter</i>
-          
+          <i class="fa-sharp fa-solid fa-filter"></i>
+          Filter
         </button>
       </div>
       <div class="col-1 ps-1 me-5">
@@ -64,10 +64,10 @@
             @endif
           </td>
           <td>
-            <button type="button" class="btn btn-sm" style="background-color: #0C5045;" onClick="edit(this)" data-id="{{ $asset-> id}}" data-nama="{{ $asset->nama }}" data-jenis="{{ $asset->jenis }}" data-harga="{{ $asset->harga }}" data-status="{{ $asset->status }}">
+            <button type="button" class="btn btn-sm" style="background-color: #0C5045;" onClick="edit(this)" data-id="{{ $asset->id}}" data-nama="{{ $asset->nama }}" data-jenis="{{ $asset->jenis }}" data-harga="{{ $asset->harga }}" data-status="{{ $asset->status }}">
               <i class="fa-sharp fa-solid fa-pencil" style="color: white;"></i>
             </button>
-            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="">
+            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" onlick="delete(this)" data-id="{{$asset->id}}">
               <i class="fa-sharp fa-solid fa-trash-can" style="color: white;"></i>
             </button>
           </td>
@@ -84,26 +84,26 @@
         <div class="modal-header">
           <h5 class="modal-title" id="modal-title"></h5>
         </div>
-        <form action="{{ route('asset.store') }}" method="POST" id="form-aset">
+        <form action="{{ route('asset.store') }}" method="POST" id="form-aset" class="needs-validation" novalidate>
           <div class="modal-body">
 
               @csrf
               <input type="hidden" name="id" id="input-id-asset">
               <div class="form-group mb-2">
                 <label for="nama-asset">Nama Aset</label>
-                <input type="text" class="form-control" id="input-nama-asset" placeholder="Masukan Nama Aset" name="nama">
+                <input type="text" class="form-control" id="input-nama-asset" placeholder="Masukan Nama Aset" name="nama" required>
               </div>
               <div class="form-group mb-2">
                 <label for="jenis-asset">Jenis Aset</label>
-                <input type="text" class="form-control" id="input-jenis-asset" placeholder="Masukan Jenis Aset" name="jenis">
+                <input type="text" class="form-control" id="input-jenis-asset" placeholder="Masukan Jenis Aset" name="jenis" required>
               </div>
               <div class="form-group mb-2">
                 <label for="harga-asset">Harga Aset</label>
-                <input type="text" class="form-control" id="input-harga-asset" placeholder="Masukan Harga Aset" name="harga">
+                <input type="text" class="form-control" id="input-harga-asset" placeholder="Masukan Harga Aset" name="harga" required>
               </div>
               <div class="form-group mb-2">
                 <label for="nama-asset">Status</label>
-                <select class="form-control" id="input-status-asset" name="status">
+                <select class="form-control" id="input-status-asset" name="status" required>
                   <option value="aktif">Aktif</option>
                   <option value="tidak aktif">Tidak Aktif</option>
                 </select>
@@ -157,5 +157,44 @@
       $("#input-status-asset").val(status).change();
       modalForm.modal('show');
     }
+
+    // function delete(e){
+    //    let id = $(e).data('id');
+
+    // }
+
+    jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+$( "#form-aset" ).validate({
+  rules: {
+      required: true
+    
+  }
+});
+
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
 </script>
 @endsection

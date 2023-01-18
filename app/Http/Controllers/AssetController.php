@@ -27,6 +27,11 @@ class AssetController extends Controller
             Asset::create($attribute);
         }
 
+        $validated = $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
+        ]);
+
         return redirect()->route('asset.index')->with('success', $message);
     }
 }
