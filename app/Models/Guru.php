@@ -2,17 +2,20 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Asset extends Model
+class Guru extends Model
 {
+
+
     use HasFactory;
 
     protected $fillable = [
-        'nama',
-        'jenis',
-        'harga',
-        'status'
+        'nama_guru',
+        'email',
+        'jenis_kelamin',
+        'alamat'
     ];
 }

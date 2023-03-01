@@ -36,7 +36,7 @@
                                 <div style="padding:8px;"><img src="{{ url('img/logo.png') }}" style="max-width: 90px; max-height: 92px; float:left; margin:0 8px 4px 0;" />
                                     <div class="row mt-3">
                                         <div style="font-size: 20px; font-weight: bold;">
-                                            Aplikasi Inventaris
+                                            Aplikasi Absensi
                                         </div>
                                         <div style="font-size: 16px; color: #757575;">
                                             SMK Al - Ittihad - Cianjur

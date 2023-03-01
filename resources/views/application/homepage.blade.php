@@ -1,200 +1,161 @@
 @extends('layouts.main')
 
 @section('content')
-@include('layouts.partials.assets')
-@include('layouts.partials.filter')
-<div class="content">
-  <div class="container">
-    <h4>
-      Daftar Inventoris
-    </h4>
-    <div class="row">
-      <div class="col-2">
-        <form class="form-inline">
-          <div class="input-group input-group-sm mb-3">
-            <input type="text" class="form-control" style="box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);" aria-label="Small" placeholder="Search" aria-describedby="inputGroup-sizing-sm">
-          </div>
-        </form>
-      </div>
-      <div class="col-1">
-        <button type="button" class="btn btn-sm btn-light" style="font-weight: 800; box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);" data-bs-toggle="modal" data-bs-target="#filterModal">
-          <i class="fa-sharp fa-solid fa-filter"></i>
-          Filter
-        </button>
-      </div>
-      <div class="col-1 ps-1 me-5">
-        <button type="button" class="btn btn-sm btn-light" style="font-weight: 800; box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);" data-bs-toggle="modal" data-bs-target="">
-          <i class="fa-sharp fa-solid fa-trash-can"></i>
-        </button>
-      </div>
-      <div class="col-7 ms-5 pe-1" style="text-align: right;">
-        <button type="button" class="btn btn-sm" style="font-weight: 600; box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2); background-color: #0C5045; color: white;" onClick="create()">
-          <i class="fa-solid fa-plus" style="color: white;"></i>
-          Tambah Aset
-        </button>
-      </div>
-    </div>
-    <table class="table table-sm table-striped table-light">
-      <thead>
-        <tr>
-          <th scope="col">
-            <input type="checkbox">
-          </th>
-          <th scope="col">Nama Aset</th>
-          <th scope="col">Jenis Aset</th>
-          <th scope="col">Harga Satuan</th>
-          <th scope="col">Status</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-      @foreach($assets as $asset)
-        <tr>
-          <th scope="row">
-            <input type="checkbox">
-          </th>
-          <td>{{ $asset->nama }}</td>
-          <td>{{ $asset->jenis }}</td>
-          <td>{{ $asset->harga }}</td>
-          <td>
-            @if($asset->status == 'aktif')
-            <button type="button" class="btn btn-sm btn-outline-success" disabled>Aktif</button>
-            @else 
-            <button type="button" class="btn btn-sm btn-outline-danger" disabled>Tidak Aktif</button>
-            @endif
-          </td>
-          <td>
-            <button type="button" class="btn btn-sm" style="background-color: #0C5045;" onClick="edit(this)" data-id="{{ $asset->id}}" data-nama="{{ $asset->nama }}" data-jenis="{{ $asset->jenis }}" data-harga="{{ $asset->harga }}" data-status="{{ $asset->status }}">
-              <i class="fa-sharp fa-solid fa-pencil" style="color: white;"></i>
-            </button>
-            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" onlick="delete(this)" data-id="{{$asset->id}}">
-              <i class="fa-sharp fa-solid fa-trash-can" style="color: white;"></i>
-            </button>
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
+    <div class="content">
+        <div class="container">
+            <div class="card">
+                <div class="card-body d-flex justify-content-between">
+                    <h5 class="fw-bold my-auto">Selamat Datang, Novry.</h5>
+                    <button class=" btn btn-sm btn-outline-info bg-light opacity-100" disabled><span class="fw-bold"> Anda sudah
+                        melakukan absensi pada pukul 08.00</span></button>
+                </div>
+            </div>
+            <div class="row my-2">
 
-  <!-- Modal -->
-  <div class="modal" id="modal-assets" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modal-title"></h5>
+                <div class="col-md-6">
+                    <div class="card pe-4">
+                        <div class="card-body">
+                            <div class=" my-2 d-flex justify-content-between">
+                                <h4 class="fw-bold my-auto">Timetables</h6>
+                                        <button type="button" class="btn btn-sm btn-light px-3 my-auto"
+                                            style="font-weight: 800; box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);"
+                                            data-bs-toggle="modal" data-bs-target="#filterModal">
+                                            <i class="fa-sharp fa-solid fa-filter"></i>
+                                            Filter
+                                        </button>
+                                </div>
+                                <hr class="border border-secondary "/>
+                            <table class="table table-borderedless table-striped">
+                                <thead>
+                                    <th>Nama Karyawan</th>
+                                    <th>Check in</th>
+                                    <th>Check out</th>
+                                    <th>Keterlambatan (menit)</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Novry</td>
+                                        <td>08.20</td>
+                                        <td>15.30</td>
+                                        <td>15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Terry</td>
+                                        <td>08.00</td>
+                                        <td>15.30</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Siti</td>
+                                        <td>08.00</td>
+                                        <td>15.30</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Usep</td>
+                                        <td>08.00</td>
+                                        <td>15.30</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rangga</td>
+                                        <td>08.00</td>
+                                        <td>15.30</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Novry</td>
+                                        <td>08.00</td>
+                                        <td>15.30</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Terry</td>
+                                        <td>08.00</td>
+                                        <td>15.30</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Siti</td>
+                                        <td>08.00</td>
+                                        <td>15.30</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Usep</td>
+                                        <td>08.00</td>
+                                        <td>15.30</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rangga</td>
+                                        <td>08.00</td>
+                                        <td>15.30</td>
+                                        <td>-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="col">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button
+                                        class="btn btn-sm btn-light px-3"style="box-shadow: 0px 1px 1px 1px
+                                        rgba(0,0,0,0.2);"><i
+                                            class="fas fa-chevron-left me-1"></i>Sebelumnya</button>
+                                    <button
+                                        class="btn btn-sm btn-light px-3"style=" box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);">1</button>
+                                    <button
+                                        class="btn btn-sm btn-light px-3"style=" box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);">2</button>
+                                    <button
+                                        class="btn btn-sm btn-light px-3"style=" box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);">3</button>
+                                    <button
+                                        class="btn btn-sm btn-ligh px-3"style=" box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);">Selanjutnya<i
+                                            class="fas fa-chevron-right ms-1"></i></button>
+                                    <small class=" text-secondary my-auto">10 dari 45 total karyawan</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-md-3 px-auto py-auto">
+                    <div class="card shadow mb-2 py-5">
+                        <div class="card-body text-center">
+                            <h1 class="card-text fs-1">10<small class=" mx-md-1 fs-6 text-secondary fw-normal">hari</small>
+                            </h1>
+                            <p class="fs-3">Kehadiran</p>
+
+                        </div>
+                    </div>
+                    <div class="card shadow mb-2 py-5">
+                        <div class="card-body text-center">
+                            <h1 class="card-text fs-1">1<small class=" mx-md-1 fs-6 text-secondary  fw-normal">hari</small>
+                            </h1>
+                            <p class="fs-3">Izin</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-3 px-auto py-auto">
+                    <div class="card shadow mb-2 py-5">
+                        <div class="card-body text-center">
+                            <h1 class="card-text fs-1 ">30<small class=" mx-md-1 fs-6 text-secondary  fw-normal">menit</small>
+                        </h1>
+                            <p class="fs-3">Keterlambatan</p>
+
+                        </div>
+                    </div>
+
+                    <div class="card shadow py-5">
+                        <div class="card-body text-center">
+                            <h1 class="card-text fs-1">0<small class=" mx-md-1 fs-6 text-secondary  fw-normal">hari</small>
+                            </h1>
+                            <p class="fs-3">Sakit</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <form action="{{ route('asset.store') }}" method="POST" id="form-aset" class="needs-validation" novalidate>
-          <div class="modal-body">
-
-              @csrf
-              <input type="hidden" name="id" id="input-id-asset">
-              <div class="form-group mb-2">
-                <label for="nama-asset">Nama Aset</label>
-                <input type="text" class="form-control" id="input-nama-asset" placeholder="Masukan Nama Aset" name="nama" required>
-              </div>
-              <div class="form-group mb-2">
-                <label for="jenis-asset">Jenis Aset</label>
-                <input type="text" class="form-control" id="input-jenis-asset" placeholder="Masukan Jenis Aset" name="jenis" required>
-              </div>
-              <div class="form-group mb-2">
-                <label for="harga-asset">Harga Aset</label>
-                <input type="text" class="form-control" id="input-harga-asset" placeholder="Masukan Harga Aset" name="harga" required>
-              </div>
-              <div class="form-group mb-2">
-                <label for="nama-asset">Status</label>
-                <select class="form-control" id="input-status-asset" name="status" required>
-                  <option value="aktif">Aktif</option>
-                  <option value="tidak aktif">Tidak Aktif</option>
-                </select>
-              </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
-      </div>
     </div>
-  </div>
-
-</div>
-
-<script>
-    const modalForm = $('#modal-assets');
-    function create() {
-      $('#modal-title').text('Create Form');
-      $('#input-id-asset').val("");
-      $('#input-nama-asset').val("");
-      $('#input-jenis-asset').val("");
-      $('#input-harga-asset').val("");
-      $("#input-status-asset").val("");
-      modalForm.modal('show');
-    }
-    
-    function closeModal() {
-      console.log('heheh');
-      $('#input-id-asset').val();
-      $('#input-nama-asset').val();
-      $('#input-jenis-asset').val();
-      $('#input-harga-asset').val();
-      $("#input-status-asset").val();
-      modalForm.modal('hide');
-    }
-    
-    function edit(e) {
-      $('#modal-title').text('Edit Form');
-      let id = $(e).data('id');
-      let nama = $(e).data('nama');
-      let harga = $(e).data('harga');
-      let jenis = $(e).data('jenis');
-      let status = $(e).data('status');
-      $('#input-id-asset').val(id);
-      $('#input-nama-asset').val(nama);
-      $('#input-jenis-asset').val(jenis);
-      $('#input-harga-asset').val(harga);
-      $("#input-status-asset").val(status).change();
-      modalForm.modal('show');
-    }
-
-    // function delete(e){
-    //    let id = $(e).data('id');
-
-    // }
-
-    jQuery.validator.setDefaults({
-  debug: true,
-  success: "valid"
-});
-$( "#form-aset" ).validate({
-  rules: {
-      required: true
-    
-  }
-});
-
-
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
-
-</script>
+    </div>
 @endsection

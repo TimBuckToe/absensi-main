@@ -3,7 +3,7 @@
         <div class=" modal-content p-3">
             <div class="modal-header p-2 align-items-start">
                 <div class="d-flex flex-column align-items-left" style="padding: 0px;">
-                    <p>Daftar Aset</p>
+                    <p>Daftar Karyawan</p>
                     <h6>Filter</h6>
                 </div>
             </div>
@@ -29,8 +29,8 @@
                 </form>
             </div>
             <div class="modal-footer d-flex justify-content-left">
-                <button type="button" class="btn bg-white w-40 text-primary py-2 mt-3">Batal</button>
-                <button type="button" class="btn bg-primary w-40 text-white py-2 mt-3">Simpan</button>
+                <button type="button" class="btn btn-outline-success w-40 text-primary py-1 mt-3 justify-start">Batal <i class="fa-solid fa-xmark"></i> </button>
+                <button type="button" class="btn bg-primary w-40 text-white py-1 mt-3">Simpan</button>
             </div>
         </div>
     </div>
