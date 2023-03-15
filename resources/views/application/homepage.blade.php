@@ -6,8 +6,9 @@
             <div class="card">
                 <div class="card-body d-flex justify-content-between">
                     <h5 class="fw-bold my-auto">Selamat Datang, Novry.</h5>
-                    <button class=" btn btn-sm btn-outline-info bg-light opacity-100" disabled><span class="fw-bold"> Anda sudah
-                        melakukan absensi pada pukul 08.00</span></button>
+                    <button class=" btn btn-sm btn-outline-info bg-light opacity-100" disabled><span class="fw-bold"> Anda
+                            sudah
+                            melakukan absensi pada pukul 08.00</span></button>
                 </div>
             </div>
             <div class="row my-2">
@@ -17,14 +18,14 @@
                         <div class="card-body">
                             <div class=" my-2 d-flex justify-content-between">
                                 <h4 class="fw-bold my-auto">Timetables</h6>
-                                        <button type="button" class="btn btn-sm btn-light px-3 my-auto"
-                                            style="font-weight: 800; box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);"
-                                            data-bs-toggle="modal" data-bs-target="#filterModal">
-                                            <i class="fa-sharp fa-solid fa-filter"></i>
-                                            Filter
-                                        </button>
-                                </div>
-                                <hr class="border border-secondary "/>
+                                    <button type="button" class="btn btn-sm btn-light px-3 my-auto"
+                                        style="font-weight: 800; box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.2);"
+                                        data-bs-toggle="modal" data-bs-target="#filterModal">
+                                        <i class="fa-sharp fa-solid fa-filter"></i>
+                                        Filter
+                                    </button>
+                            </div>
+                            <hr class="border border-secondary " />
                             <table class="table table-borderedless table-striped">
                                 <thead>
                                     <th>Nama Karyawan</th>
@@ -138,8 +139,9 @@
                 <div class=" col-md-3 px-auto py-auto">
                     <div class="card shadow mb-2 py-5">
                         <div class="card-body text-center">
-                            <h1 class="card-text fs-1 ">30<small class=" mx-md-1 fs-6 text-secondary  fw-normal">menit</small>
-                        </h1>
+                            <h1 class="card-text fs-1 ">30<small
+                                    class=" mx-md-1 fs-6 text-secondary  fw-normal">menit</small>
+                            </h1>
                             <p class="fs-3">Keterlambatan</p>
 
                         </div>
@@ -157,5 +159,8 @@
             </div>
         </div>
     </div>
+    @foreach ($teachers as $teacher)
+        {{ $teacher->nama_guru }}</br>
+    @endforeach
     </div>
 @endsection

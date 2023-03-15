@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guru;
+use App\Http\Controllers\GuruController;
+
 // use App\Http\Controllers\EmployeeController;
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +33,8 @@ Route::get('/admin', function () {
 });
 
 
-Route::get('/guru/id', [GuruController::class, 'tampil']);
-
+// Route::get('/guru/id', [GuruController::class, 'tampil']);
+Route::resource('guru',GuruController::class);
 // Route::controller(GuruController::class)->group(function () {
 //     Route::get('/admin', 'index')->name('guru.index');
 //     Route::post('/admin', 'store')->name('guru.store');
