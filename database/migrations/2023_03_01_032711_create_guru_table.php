@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('guru', function (Blueprint $table) {
             $table->id('id_guru');
+            $table->foreignId('id_user');
             $table->string('nama_guru', 200);
             $table->string('email', 50);
             $table->string('jenis_kelamin', 20);

@@ -22,6 +22,10 @@ Route::get('/login', function () {
     return view('auth/login');
 });
 
+Route::get('/register', function () {
+    return view('application/register');
+});
+
 Route::get('/admin', function () {
     return view('application/admin');
 });

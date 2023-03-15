@@ -23,6 +23,13 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function run(): void
+    {
+        User::factory()
+                ->count(10)
+                ->hasPosts(1)
+                ->create();
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
