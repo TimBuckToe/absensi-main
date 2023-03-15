@@ -159,8 +159,8 @@
             </div>
         </div>
     </div>
-    @foreach ($teachers as $teacher)
+    {{-- @foreach ($teachers as $teacher)
         {{ $teacher->nama_guru }}</br>
-    @endforeach
+    @endforeach --}}
     </div>
 @endsection
