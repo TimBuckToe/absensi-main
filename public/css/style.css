@@ -59,6 +59,10 @@ body{
   color: #00796B !important;
 }
 
+.btn-success{
+  background-color: #0C5045 !important;
+}
+
 .text-warning {
   color: #FFCA28 !important;
 }

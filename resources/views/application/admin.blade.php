@@ -134,8 +134,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-sm btn-outline-success" data-bs-dismiss="modal">Batal <i class="ms-5 fas fa-xmark"></i></button>
+                            <button type="submit" class="btn btn-sm btn-success">Simpan <i class="ms-5 fas fa-check"></i></button>
                         </div>
                     </form>
                 </div>
